@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of Trapezoid</title>
+</head>
+<body>
+    <!-- <p var A=a style="font-size: 25px;"></p>
+    <p var B=b style="font-size: 25px;"></p>
+    <p var H=h style="font-size: 25px;"></p> -->
+    <h1>The area of Trapezoid is</h1>
+    <p id="area" style="font-size: 25px;"></p>
+    <script>
+        var a=parseInt(prompt("Enter the value of A:"));
+        var b=parseInt(prompt("Enter the value of B:"));
+        var h=parseInt(prompt("Enter the value of H:"));
+        area=((a+b)/2)*h;
+        document.write("A:"+a+"<br>");
+        document.write("B:"+b+"<br>");
+        document.write("H:"+h+"<br>");
+        // document.write(area);
+        document.getElementById("area").innerText=area;
+        // document.getElementById("area").innerHTML;
+    </script>
+</body>
+</html>

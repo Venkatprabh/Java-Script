@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of Parallogram</title>
+    <style>
+        span{
+            color: red;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Area of <span>PARALLOGRAM</span> of User defined Value:</h1>
+    <p id="area"></p>
+    <script>
+        var b = parseInt(prompt("Enter the value of Base"));
+        var h = parseInt(prompt("Enter the value of Height"));
+        area = b*h;
+        document.getElementById("area").innerHTML=area;
+    </script>
+</body>
+</html>

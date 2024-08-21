@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 0.4.3</title>
+</head>
+<body>
+    <p id="res" style="font-size: larger;"></p>
+    <script>
+        var s = parseInt(prompt("Enter the value of S:"));
+        var m = parseInt(prompt("Enter the value of M:"));
+        var x = parseInt(prompt("Enter the value of X:"));
+
+        res = (1/(Math.sqrt(2*3.1415))*s)*Math.exp((-1/2)*((x-m)/s)**2);
+
+        // var a = 1/(Math.sqrt(2*Math.PI)*s);
+        // var b = (1/2)*Math.pow((x-m)/s,2);
+        // res = a*Math.exp(b);
+        document.getElementById("res").innerHTML=res;
+    </script>
+</body>
+</html>

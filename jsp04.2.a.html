@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 0.4.2a</title>
+</head>
+<body>
+    <p id="LHS"></p>
+    <p id="RHS"></p>
+   
+    <script>
+        var a = parseInt(prompt("Enter the A value:"));
+        var b = parseInt(prompt("Enter the B Value:"));
+        var x = a+b;
+        var LHS = Math.pow(x,2);
+        document.getElementById("LHS").innerHTML=LHS;
+        var RHS = (Math.pow(a,2)) + (2*a*b) + (Math.pow(b,2));  // the "m" in the math.pow should be Upper case
+        var p = Math.pow(a,2);  // the "m" in the math.pow should be Upper case
+        var q = Math.pow(b,2);  // the "m" in the math.pow should be Upper case
+        var r = 2*a*b;
+        var RHS = p+q+r; 
+        document.getElementById("RHS").innerHTML=RHS;
+    </script>
+</body>
+</html>

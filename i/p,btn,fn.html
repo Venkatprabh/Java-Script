@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        input{
+            padding: 15px;
+            font-size: 30px;
+            width: 800px;
+            height: 50px;
+            margin-top: 10px;
+            border: 1px solid brown;
+            border-radius: 5px;
+            /* background-color: grey; */
+            color: red;
+            display: block;
+        }
+
+        button{
+            padding: 5px;
+            margin: 8px;
+            width: 120px;
+            height: 25px;
+            border-radius: 3px;
+            display: inline;
+        }
+        
+        div{
+            text-align: center;
+            position: absolute;
+            top: 20px;
+            right: 400px;
+            padding: 10px;
+            border-radius: 15px;
+            margin: 20px;
+            float: right;
+            display: flex;
+            border: 1px solid brown;
+            width: 150px;
+            height: 70px;
+            overflow-x: scroll;
+            /* overflow: hidden; */
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num1" placeholder="Enter num1 Value">
+    <input type="number" id="num2" placeholder="Enter num2 Value">
+    
+    <button onclick="addValue()">ADDITION</button>
+    <button onclick="subValue()">SUBTRACTION</button>
+    <button onclick="mulValue()">MULTIPLICATION</button>
+    <button onclick="divValue()">DIVISION</button>
+    <button onclick="modValue()">MODULE</button>
+    <button onclick="expValue()">EXPONENTIAL</button>
+
+    <div id="result"></div> <!--To Print the result in the same Page. -->
+    <script>
+        function addValue(){
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x + y;
+            document.getElementById("result").innerHTML=`<p style="font-size: 24px;">${result}</p>`;
+            // document.write(`Sum of ${x} and ${y} is ${z}`);
+        }
+        function subValue(){
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x - y;
+            document.getElementById("result").innerHTML=`<p style="font-size: 24px;">${result}</p>`;
+        }
+        function mulValue(){
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x * y;
+            document.getElementById("result").innerHTML=`<p style="font-size: 24px;">${result}</p>`;
+        }
+        function divValue(){
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x / y;
+            document.getElementById("result").innerHTML=`<p style="font-size: 24px;">${result}</p>`;
+        }
+        function modValue(){
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x % y;
+            document.getElementById("result").innerHTML=`<p style="font-size: 24px;">${result}</p>`;
+        }
+        function expValue(){
+            var x = parseFloat(document.getElementById("num1").value);
+            var y = parseFloat(document.getElementById("num2").value);
+            var result = x ** y;
+            document.getElementById("result").innerHTML=`<p style="font-size: 24px;">${result}</p>`;
+        }
+    </script>
+</body>
+</html>

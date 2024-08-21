@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    
+</head>
+
+<body>
+    
+    <h1 style="font-size: 30px;">The Radian value of given number is</h1>    
+    <h2 id="rad" style="font-size: 30px;"></h2>
+    <h2 id="deg" style="font-size: 30px;"></h2>
+    <script>
+        var deg = parseInt(prompt("Enter a Degree value"));
+        var rad=(deg*3.14)/180;
+        // document.writeln(deg);
+        // document.writeln(rad);
+        document.getElementById("rad").innerHTML=rad;
+        document.getElementById("rad").innerHTML=deg;
+    </script>
+</body>
+</html>

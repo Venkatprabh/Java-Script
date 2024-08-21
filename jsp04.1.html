@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 0.4.1</title>
+</head>
+<body>
+    <h1>The results is Below</h1>
+    <p id="res"></p>
+    <script>
+        var A = parseInt(prompt("Enter the value of A:"));
+        var p = parseInt(prompt("Enter the value of p:"));
+        var n = parseInt(prompt("Enter the value of n:"));
+        res = A*(Math.pow((1+(p/100)),n));  // the "m" in the math.pow should be Upper case
+        var x = p/100;
+        var y = 1+x;
+        var z = Math.pow(y,n); // the "m" in the math.pow should be Upper case
+        var res = A*z;
+        document.write(res);
+        document.write(A);
+        document.getElementById("res").innerHTML=res;
+    </script>
+</body>
+</html>
