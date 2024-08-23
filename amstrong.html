@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amstrong Number</title>
+</head>
+<body>
+
+    <script>
+        var x = parseInt(prompt("Enter a Number:"));
+        var y = String(x);
+        var z = y.length;
+        var temp = x;
+        res = 0;
+        while(x>0){
+            res = res+Math.pow(x%10,z);
+            x = Math.floor(x/10); 
+        }
+        if (res == temp){
+            document.write(`${temp} is an Amstrong Number.`);
+        }
+        else{
+            document.write(`${temp} is not an Amstrong Number.`);
+        }
+    </script>
+</body>
+</html>

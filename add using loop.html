@@ -7,9 +7,14 @@
 </head>
 <body>
     <script>
-        var x = 
+        var x = 1;
         var y = parseInt(prompt("Enter the N'th term:"));
-        document.write(x);
+        sum = 0;
+        while(x<=y){
+            sum=sum+(1/x);
+            x++;
+        }
+        document.write(sum);
     </script>
 </body>
 </html>

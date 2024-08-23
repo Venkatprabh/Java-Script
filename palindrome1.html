@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome upto n</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        var x = parseInt(prompt("Set the Palindrome Limit"));
+        rev = 0;
+        while(a<=x){
+            while(a>0){
+                var d = a%10;
+                rev = (rev * 10)+d;
+                a = Math.floor(a/10); 
+            }
+            document.write(rev);
+            a++;
+        }
+    </script>
+</body>
+</html>
