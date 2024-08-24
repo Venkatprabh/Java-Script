@@ -7,9 +7,22 @@
 </head>
 <body>
     <script>
-        var x = parseInt(prompt("Enter the limit:"));
+        var lim = parseInt(prompt("Enter the limit:"));
+        res = 0;
 
-        
+        for(a=1; a<=lim; a++){
+            var temp = a; 
+            var b = String(a);
+            var c = b.length;
+                while(a>0){
+                    var d = a%10;
+                    res = res + Math.pow(d,c);
+                    a = Math.floor(a/10);
+                }
+                if (temp==res){
+                    document.write(res);
+                }
+        }
     </script>
 </body>
 </html>
