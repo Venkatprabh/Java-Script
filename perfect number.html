@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Number</title>
+</head>
+<body>
+    <script>
+        var x = parseInt(prompt("Enter a X value:"));
+        var sum = 0;
+        var a = 1;
+        for( ; a<x; a++){
+            if(x%a == 0){
+                sum = sum + a;
+            }
+        }
+        if(sum == x){
+            document.write(`${x} is a Perfect Number.`)
+        }
+        else{
+            document.write(`${x} is not a Perfect Number.`)
+        }
+    </script>
+</body>
+</html>
