@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic maths functions</title>
+    <style>
+        button{
+            border: 10px solid rgb(87, 161, 211);
+            border-radius: 15px;
+            /* background-color: rgb(105, 105, 206); */
+            font-size: 25px;
+            margin: 20px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="addNum()">Addition</button>
+    <button onclick="subNum()">Subtraction</button>
+    <button onclick="multiNum()">Product</button>
+    <button onclick="divNum()">Quatient</button>
+    <button onclick="modNum()">Modulas</button>
+    <button onclick="expNum()">Exponential</button>
+    <button onclick="flrNum()">Floor Division</button>
+    <script>
+        function addNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            var c = a+b;
+            document.write(c)
+            return c
+        }
+        function subNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            c = a-b;
+            document.write(c)
+            return c
+        }
+        function multiNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            c = a*b;
+            document.write(c)
+            return c
+        }
+        function divNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            c = a/b;
+            document.write(c)
+            return c
+        }
+        function modNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            c = a%b;
+            document.write(c)
+            return c
+        }
+        function expNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            c = a**b;
+            document.write(c)
+            return c
+        }
+        function flrNum(a,b){
+            var a = parseInt(prompt("Enter the Value of A:"));
+            var b = parseInt(prompt("Enter the Value of B:"));
+            c = Math.floor(a,b);
+            document.write(c)
+            return c
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function for Palindrome</title>
+</head>
+<body>
+    <script>
+        var x = parseInt(prompt("Enter a Number:"));
+        var y = String(x); // we cannot find the length of an integer,so we have to convert into a string.
+        temp = x;
+        var rev = 0;
+        while(x>0){
+           var d = x%10;
+           rev = (rev * 10)+d;
+           x = Math.floor(x/10); 
+        }
+
+        if(rev == temp){
+            document.write(`${temp} is a Palindrome Number`);
+        }
+        else{
+            document.write(`${temp} is not a Palindrome Number`);
+        }
+        </script>
+</body>
+</html>
