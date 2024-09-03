@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Arrow Function</title>
+    
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            padding: 100px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+    // Find power value of given array value
+        // var x = [2,4,6,8];
+        // var y = x.map(n => Math.pow(n,2));
+        // document.write(y);
+
+    // Print specified msg over a period of time.(Here 2 seconds given.)
+        // setInterval(() => {
+        //     document.write("Welcome to my Web page.","<br>");
+        //     document.write("I will show this msg every 2seconds.","<br>");
+        // },2000);
+    
+    // Counter
+        var counter = 0;
+        var increment = () =>{
+            counter++;                      
+            document.write(`COUNTER : ${counter}`,"<br>");
+        };
+
+        setInterval(increment,1000);
+    </script>
+</body>
+</html>
