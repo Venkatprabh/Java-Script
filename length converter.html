@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <p>
+    <label style="font-size: 25px;">Kilometer:</label>
+    <input type="number" placeholder="KM" style="font-size: 30px;"
+    oninput="LengthConverter(this.value)"
+    onchange="LengthConverter(this.value)">
+    </p>
+    <p>Meter: <span id="outputM"></span></p>
+
+    <script>
+        function LengthConverter(valNum){
+        document.getElementById("outputM").innerHTML=valNum*1000;
+        }
+    </script>
+</body>
+</html>

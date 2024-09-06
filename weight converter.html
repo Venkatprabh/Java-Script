@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weight Converter</title>
+    <title>weight converter</title>
 </head>
 <body>
-    <input type="number" placeholder="WEIGHT">
-    <button onclick=""></button>
+    <h1 style="text-align: center; text-decoration: underline;">WEIGHT CONVERTER</h1>
+    <label>Kilogram:</label>
+    <input type="number" placeholder="kg" style="font-size: 25px;"
+    oninput="weightConverter(this.value)"
+    onchange="weightConverter(this.value)">
+    <script>
+        document.getElementById("weightConverter").innerHTML=valNum;
+    </script>
 </body>
 </html>
