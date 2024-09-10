@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retrieve and Store Object in Table</title>
+</head>
+<body>
+
+  <h2>Retrieve Object and Store in Table</h2>
+
+  <!-- Form to retrieve object -->
+  <form id="objectForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="age">age:</label>
+    <input type="number" id="age" name="age" required><br><br>
+
+    <label for="phone">phone:</label>
+    <input type="number" id="phone" name="phone" required><br><br>
+
+    <label for="email">email:</label>
+    <input type="text" id="email" name="email" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Table to display stored objects -->
+  <h3>Stored Objects:</h3>
+  <table border="1" id="objectTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById("objectForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Retrieve object from the form inputs
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value;
+      // Create an object to store the data
+      const obj = {
+        name: name,
+        age: age,
+        phone:phone,
+        email:email
+      };
+
+      // Log the object to see it in the console (optional)
+      console.log("Created Object:", obj);
+
+      // Now store the object's data into the table
+      const table = document.getElementById("objectTable").getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+
+      // Insert cells and values from the object
+      const nameCell = newRow.insertCell(0);
+      const ageCell = newRow.insertCell(1);
+      const phoneCell = newRow.insertCell(2);
+      const emailCell = newRow.insertCell(3);
+
+      nameCell.innerHTML = obj.name;
+      ageCell.innerHTML = obj.age;
+      phoneCell.innerHTML = obj.phone;
+      emailCell.innerHTML = obj.email;
+      // Optionally, clear the form
+      document.getElementById("objectForm").reset();
+    });
+  </script>
+
+</body>
+</html>

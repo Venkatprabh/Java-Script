@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Creating Methods</title>
+    <style>
+        body{
+            font-size: 25px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    // 1.object literal method
+        var person = {firstName : "Venkatesh",
+                    lastName : "Prabhu",
+                    sex : "male",
+                    age : "28",
+                    fullName : function(){
+                        return this.firstName +" "+ this.lastName
+                                         }
+                    }
+        document.write(person.fullName());
+        document.write("<br>");
+        document.write("<br>");
+        
+    // 2.using constructor function
+        function person(firstName,lastName,age,sex){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.sex = sex;
+            this.fullName = function(){
+                return this.firstName+" "+this.lastName;
+            };
+        };
+        let person1 = new person("venkatesh","prabhu",28,"male");
+        
+
+        document.write(person1.fullName());
+        
+    </script>
+</body>
+</html>
