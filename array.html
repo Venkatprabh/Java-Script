@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Array Handling</title>
+</head>
+<body>
+    <script>
+        let arr = [2,4,6,8,10]; //let used to declare a variable globally.
+        document.write(arr);
+        document.write("<br>");
+        document.write("<br>");
+        
+        for (i=0;i<arr.length;i++){
+            document.write(arr[i],"<br>");
+        }
+        document.write("<br>");
+        document.write("<br>");
+
+        arr[3] = 9;
+        document.write(arr)
+        document.write("<br>");
+        document.write("<br>");
+
+        let x = new Array("venkat","venkatesh","prabhu");
+        document.write(x);
+        document.write("<br>");
+        document.write("<br>");
+
+        let y = new Array();
+        y[0] = "venkatesh";
+        y[1] = "prabhu";
+        y[2] = "venkat";
+        document.write(y,"<br>");
+        for (i=0;i<y.length;i++){
+            document.write(y[i],"<br>");
+        }
+        document.write("<br>");
+        document.write("<br>");
+
+        
+    </script>
+</body>
+</html>
