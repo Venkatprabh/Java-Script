@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Array Methods</title>
+</head>
+<body>
+    <script>
+        // 1.concad() Returns a new array which contain merged 2 or more arrays.
+            let arr1 = [1,2,3,4,5];
+            let arr2 = [6,7,8,9,0];
+            document.write(arr1.concat(arr2,"<br>"));
+            document.write(arr2.concat(arr1));
+            document.write("<br>");
+            document.write("<br>");
+
+        // 2.copyWithin() Returns a new array which copies part of its own array.
+            document.write(arr1.copyWithin(0,2,4),"<br>"); // here 0,2,4 all are index values.
+            document.write(arr1.copyWithin(1,3));
+            document.write("<br>");
+            document.write("<br>");
+
+        // 3.entries()
+            let arr3 = [1,2,3,4,5];
+            document.write(arr3.entries(),"<br>"); //Here the output is [object array iterator] we can't get the key:value pair.
+            // we can get it through iteration.
+            var x = arr3.entries();
+            for (let i of x){
+                document.write(i,"<br>")
+            }
+            document.write("<br>");
+            document.write("<br>");
+
+        // 4.every() This metnod returns a boolean value of an array which satisfy the given condition inside a function.
+            var marks = [71,75,82,89,88]
+            function check(val){
+                return val>70
+            }            
+            document.write(marks.every(check));
+    </script>
+</body>
+</html>
