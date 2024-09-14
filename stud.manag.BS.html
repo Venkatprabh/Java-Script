@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+</head>
+<style>
+
+    .container{
+        margin: 20px;
+    }
+    input{
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 30px;
+    }
+    table{
+        width: 100%;
+        padding: 15px;
+    }
+</style>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<body>
+    <div class="container">
+    <form id="student">
+        <label for="Name">NAME</label><br>
+        <input type="text" placeholder="Student Name" class="form-control"><br>
+        <label for="Age">AGE</label><br>
+        <input type="number" placeholder="Age" class="form-control"><br>
+        <label for="Sex">SEX</label><br>
+        <input type="text" placeholder="Sex" class="form-control"><br>
+        <label for="Reg.No">PHONE NO</label><br>
+        <input type="number" placeholder="Registration Number" class="form-control"><br>
+
+        <button type="submit" style="color: blueviolet;">SUBMIT</button>
+    </form>
+
+    <div class="student-Info">
+        <p style="text-align: center; font-size: 35px; text-decoration: solid;">Class Students Information</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>Name</tr>
+                <tr>Age</tr>
+                <tr>Sex</tr>
+                <tr>Contact No</tr>
+            </thead>
+
+            <tbody
+                id="studentInfoBody">
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script>
+        let student = {};
+
+        function renderInfo(){}
+            const studentInfoBody = document.getElementById(studentInfoBody);
+            studentInfoBody.innerHTML="";
+            for (let Name in student){
+                const student = student[Name];
+                const row = document.createElement(tr);
+                row.innerHTML = `
+                    <td>${student.Name}</td>
+                    <td>${student.Age}</td>
+                    <td>${student.Sex}</td>`
+                    
+            }
+    </script>
+</body>
+</html>

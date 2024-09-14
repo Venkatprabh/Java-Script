@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Table</title>
+    <style>
+        .form{
+            margin: auto;
+            width: 400px;
+            background-color: bisque;
+            border-collapse: collapse;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        .form label{
+            display: block;
+            padding: 5px;
+        }
+        .form input{
+            display: block;
+            width: 100%;
+            margin: 10px;
+        }
+        .button{
+            background-color: rgb(71, 129, 71);
+            margin-bottom: 10px;
+        }
+        .table{
+            width: 100%;
+            padding: 20px;
+        }
+        .table thead {
+            text-align: center;
+            text-decoration: solid;
+            font-size: 25px;
+        }
+        .table tbody{
+            font-size: 20px;
+        }
+        .btn{
+            border-radius: 5px;
+            background-color: rgb(71, 129, 71);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; padding: 10px;">Student Management System</h1>
+
+    <form class="form">
+
+        <label for="reg.no">Reg.No:</label>
+        <input type="number" name="Registration Number" placeholder="Registration Number">
+        
+        <label for="name">Name:</label>
+        <input type="text" name="Name" placeholder="Student Name">
+        
+        <label for="age">Age</label>
+        <input type="number" name="Age" placeholder="Age">
+        
+        <label for="contact.no">Contact No</label>
+        <input type="number" name="Contact Number" placeholder="Phone Number">
+        
+        <button type="submit" style="float: left; padding-left: 10px;">Create Student Info</button>
+    </form>
+
+    <table>
+        <thead>
+            <th>Registration Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Contact Number</th>
+        </thead>
+        <tbody id="studentInfoBody">
+        </tbody>
+    </table>
+    <script>
+        let student = {};
+        function renderInfo(){
+            const studentInfoBody = document.getElementById('studentInfoBody');
+            studentInfoBody.innerHTML="";
+        }
+
+        for (let reg in student){
+            const stut = student[reg];
+            const row = document.createElement('tr');
+            row.innerHTML=`
+                            <td>${reg}</td>
+                            <td>${student.Name}</td>
+                            <td>${student.Age}</td>
+                            <td>${reg.Contact.no}</td>
+                             `
+        }
+    </script>
+</body>
+</html>

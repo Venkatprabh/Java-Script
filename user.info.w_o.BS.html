@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations with Object</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            background-color: #7a66b1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            color: #fff;
+        }
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>STUDENT MANAGEMENT SYSTEM -(2024-2025)</h1>
+    
+    <form id="user-form">
+        <div class="form-group">
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId">
+        </div>
+        <div class="form-group">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName">
+        </div>
+        <div class="form-group">
+            <label for="userAge">Age:</label>
+            <input type="text" id="userAge">
+        </div>
+        <div class="form-group">
+            <label for="userEmail">Email:</label>
+            <input type="text" id="userEmail">
+        </div>
+
+        <button type="submit">Create User</button>
+    </form>
+
+    <div id="user-list">
+        <h2>User List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- User list will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let users = {};
+
+        function renderUsers() {
+            const userTableBody = document.getElementById('userTableBody');
+            userTableBody.innerHTML = '';  // Clear previous content
+
+            for (let id in users) {
+                const user = users[id];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.age}</td>
+                    <td>${user.email}</td>
+                    <td>
+                        <button class="btn btn-warning" onclick="updateUser(${id})">Update</button>
+                        <button class="btn btn-danger" onclick="deleteUser(${id})">Delete</button>
+                    </td>
+                    `;
+                userTableBody.appendChild(row);
+            }
+        }
+
+        document.getElementById("user-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const id = document.getElementById('userId').value;
+            const name = document.getElementById('userName').value;
+            const age = document.getElementById('userAge').value;
+            const email = document.getElementById('userEmail').value;
+
+            if (id && name && age && email) {
+                users[id] = { name, age, email };
+                renderUsers();
+                console.log(users);
+            }
+
+            document.getElementById("user-form").reset();
+        });
+
+        function updateUser(id) {
+            const name = prompt("Enter new name:", users[id].name);
+            const age = prompt("Enter new age:", users[id].age);
+            const email = prompt("Enter new email:", users[id].email);
+
+            if (name !== null && age !== null && email !== null) {
+                users[id] = { name, age, email };
+                renderUsers();
+            }
+        }
+
+        function deleteUser(id) {
+            delete users[id];
+            renderUsers();
+        }
+    </script>
+
+</body>
+</html>
