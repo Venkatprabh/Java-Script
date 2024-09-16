@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions with Objects</title>
+</head>
+<body>
+     <script>
+            const createUser = (name, age) => ({ name, age });
+            console.log(createUser('Venkatesh Prabhu', 25));
+// Output: { name: 'Venkatesh Prabhu', age: 25 }
+
+
+        // 2.Arrow function inside an object
+            const person = {
+                name : "venkatesh prabhu",
+                greet : () => `Hello, ${person.name}!`
+            }
+            document.write(person.greet())
+    </script>
+</body>
+</html>
