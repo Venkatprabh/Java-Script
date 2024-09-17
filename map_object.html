@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let apiCache = new Map();
+
+// Function to fetch data, caching the response
+function fetchData(apiUrl) {
+  if (apiCache.has(apiUrl)) {
+    console.log('Serving from cache:', apiUrl);
+    return apiCache.get(apiUrl); // Serve from cache if available
+  }
+
+  console.log('Fetching from API:', apiUrl);
+  // Simulate an API call
+  let responseData = { data: "some API data" }; // Placeholder data
+  apiCache.set(apiUrl, responseData); // Cache the result
+  return responseData;
+}
+
+// Example usage
+fetchData('https://api.example.com/data/1');
+fetchData('https://api.example.com/data/1'); // This will be served from cache
+
+    </script>
+</body>
+</html>
