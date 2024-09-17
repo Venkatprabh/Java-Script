@@ -148,8 +148,8 @@
                     <td>${user.age}</td>
                     <td>${user.email}</td>
                     <td>
-                        <button class="btn btn-warning" onclick="editUser('${id}')">Edit</button>
-                        <button class="btn btn-danger" onclick="deleteUser('${id}')">Delete</button>
+                        <button class="btn btn-warning" onclick="updateUser(${id})">Update</button>
+                        <button class="btn btn-danger" onclick="deleteUser(${id})">Delete</button>
                     </td>
                     `;
                 userTableBody.appendChild(row);
@@ -158,43 +158,29 @@
 
         document.getElementById("user-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            const id = document.getElementById('userId').value.trim();
-            const name = document.getElementById('userName').value.trim();
-            const age = document.getElementById('userAge').value.trim();
-            const email = document.getElementById('userEmail').value.trim();
+            const id = document.getElementById('userId').value;
+            const name = document.getElementById('userName').value;
+            const age = document.getElementById('userAge').value;
+            const email = document.getElementById('userEmail').value;
 
-            if (!id || !name || !age || !email) {
-                alert("All fields are required!");
-                return;
+            if (id && name && age && email) {
+                users[id] = { name, age, email };
+                renderUsers();
+                console.log(users);
             }
-
-            if (isNaN(age) || age <= 0) {
-                alert("Please enter a valid age.");
-                return;
-            }
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
-
-            if (users[id]) {
-                alert("User ID already exists.");
-                return;
-            }
-
-            users[id] = { name, age, email };
-            renderUsers();
 
             document.getElementById("user-form").reset();
         });
 
-        function editUser(id) {
-            document.getElementById('userId').value = id;
-            document.getElementById('userName').value = users[id].name;
-            document.getElementById('userAge').value = users[id].age;
-            document.getElementById('userEmail').value = users[id].email;
+        function updateUser(id) {
+            const name = prompt("Enter new name:", users[id].name);
+            const age = prompt("Enter new age:", users[id].age);
+            const email = prompt("Enter new email:", users[id].email);
+
+            if (name !== null && age !== null && email !== null) {
+                users[id] = { name, age, email };
+                renderUsers();
+            }
         }
 
         function deleteUser(id) {
@@ -205,4 +191,3 @@
 
 </body>
 </html>
-
