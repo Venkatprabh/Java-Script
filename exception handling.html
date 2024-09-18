@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling Methods</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        .line{
+            border-bottom: 12px black;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+//1.  
+     try{
+            let result1 = 10/0;
+            // document.write(result1);
+            // if we try to get zero div.error the error type comes in try block, not considering catch block.
+            if (result1 == "infinity"){
+                throw new Error("Integer Cannot be divide by zero");
+            }
+        }
+        catch(error){
+            document.write("An error occoured:"+error.name);
+            document.write("an error occoured:"+error.message);
+        }
+        // finally{
+        //     document.write("done")
+        // }
+        document.getElementById('line');
+        document.write("<br>");
+        
+        try{
+            let result2 = 10/i;
+            document.write(result2);
+        }
+        catch(error){
+            document.write("An error occured:"+error.name);
+            document.write("<br>");
+            document.write("An error occured:"+error.message)
+        }
+        document.write("<br>");
+// 2.
+        function divide(a,b){
+            if (b === 0){
+               throw new Error("Division by Zero is unavailable");
+            //    costomize the error
+            }
+            else{
+                return a/b
+            }
+        }
+
+       try{
+            let result3 = divide(10,0);
+            document.write(result3);
+       } 
+       catch(error){
+            document.write(error.name);
+            document.write("<br>");
+            document.write(error.message);
+            document.write("<br>");
+            document.write("<br>");
+            document.write(error.stack);
+            document.write("<br>");
+        }
+       finally{
+        document.write("Execution Done")
+        // finally used to close the conection and release the resources.
+       }
+       document.write("<br>");
+
+// 3.
+       function divide1(a,b){
+            if (b===0){
+                let error =  new Error("Zero Divisible Error Occoured");
+                error.code = 400;
+                error.date = new Date();
+                throw error
+            }
+            else{
+                return a/b
+            }
+       }
+
+     try{
+        let result4 = divide1(10,0);
+        document.write(result4);
+     }  
+     catch(error){
+        document.write(error.name,":",error.message,":<br>",error.date,":",error.code);
+     }
+    </script>
+</body>
+</html>

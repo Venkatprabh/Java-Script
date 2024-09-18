@@ -5,203 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 10px;
         }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
+        form{
+            margin: 0 auto;
+            width: 500px;
+            padding: 25px;
+            background-color: cadetblue;
+            border-radius: 15px;
         }
-
-        form {
-            background-color: #7a66b1;
-            padding: 20px;
+        form label{
+            float: left;
+            display: block;
+            padding: 10px;
+        }
+        form input{
+            padding: 10px;
+            width: 95%;
+            /* text-align: center; */
+            display: flex;
+            border: 1px rgb(46, 46, 197);
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: auto;
+            font-size: 20px;
         }
-        .form-group {
-            margin-bottom: 25px;
-        }
-        .form-group label {
+        form button{
+            margin-top: 18px;
+            width: 50%;
             display: block;
-            margin-bottom: 6px;
+            border-radius: 10px;
+            background-color: rgb(230, 86, 86);
         }
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+        table{
             display: block;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+            padding: 10px;
             margin-top: 20px;
-        }
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        table th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .btn {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-warning {
-            background-color: #ffc107;
-            color: #fff;
-        }
-        .btn-warning:hover {
-            background-color: #e0a800;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-            color: #fff;
-        }
-        .btn-danger:hover {
-            background-color: #c82333;
+            width: 80%;
+            margin: 0 auto;
+            border: 2px solid blue;
         }
     </style>
 </head>
 <body>
+    <form id="Student-form">
+        <label for="reg">Student ID</label>
+        <input type="text" id="reg" placeholder="Reg.No">
 
-    <h1>STUDENT MANAGEMENT SYSTEM -(2024-2025)</h1>
-    
-    <form id="user-form">
-        <div class="form-group">
-            <label for="userId">User ID:</label>
-            <input type="text" id="userId">
-        </div>
-        <div class="form-group">
-            <label for="userName">Name:</label>
-            <input type="text" id="userName">
-        </div>
-        <div class="form-group">
-            <label for="userAge">Age:</label>
-            <input type="text" id="userAge">
-        </div>
-        <div class="form-group">
-            <label for="userEmail">Email:</label>
-            <input type="text" id="userEmail">
-        </div>
+        <label for="name">Student Name</label>
+        <input type="text" id="name" placeholder="Name">
 
-        <button type="submit">Create User</button>
+        <label for="age">Student Age</label>
+        <input type="text" id="age" placeholder="Age">
+
+        <label for="email">Student E-mail ID</label>
+        <input type="text" id="email" placeholder="Email">
+
+        <button type="submit">Create Student Profile</button>
     </form>
 
-    <div id="user-list">
-        <h2>User List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-                <!-- User list will be populated here -->
-            </tbody>
-        </table>
-    </div>
+    <table id="student-table">
+        <thead>
+            <th>Reg.No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>E-mail</th>
+        </thead>
+        <tbody id="studentTableBody">
+
+        </tbody>
+    </table>
 
     <script>
-        let users = {};
-
-        function renderUsers() {
-            const userTableBody = document.getElementById('userTableBody');
-            userTableBody.innerHTML = '';  // Clear previous content
-
-            for (let id in users) {
-                const user = users[id];
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.age}</td>
-                    <td>${user.email}</td>
-                    <td>
-                        <button class="btn btn-warning" onclick="editUser('${id}')">Edit</button>
-                        <button class="btn btn-danger" onclick="deleteUser('${id}')">Delete</button>
-                    </td>
-                    `;
-                userTableBody.appendChild(row);
-            }
-        }
-
-        document.getElementById("user-form").addEventListener("submit", function(event) {
+        let student={};
+        document.getElementById(Student-form).addEventListener("submit",function(event){
             event.preventDefault();
-            const id = document.getElementById('userId').value.trim();
-            const name = document.getElementById('userName').value.trim();
-            const age = document.getElementById('userAge').value.trim();
-            const email = document.getElementById('userEmail').value.trim();
+            const reg = document.getElementById('reg').value;
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const email = document.getElementById('email').value;
 
-            if (!id || !name || !age || !email) {
-                alert("All fields are required!");
-                return;
+            if (reg && name && age && email){
+                student[reg] = {name,age,email};
+                renderInfo();
+                console.log(student)
             }
-
-            if (isNaN(age) || age <= 0) {
-                alert("Please enter a valid age.");
-                return;
-            }
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
-
-            if (users[id]) {
-                alert("User ID already exists.");
-                return;
-            }
-
-            users[id] = { name, age, email };
-            renderUsers();
-
-            document.getElementById("user-form").reset();
+            document.getElementById(student-form).reset();
         });
 
-        function editUser(id) {
-            document.getElementById('userId').value = id;
-            document.getElementById('userName').value = users[id].name;
-            document.getElementById('userAge').value = users[id].age;
-            document.getElementById('userEmail').value = users[id].email;
+        function renderInfo(){
+            const studentTableBody = document.getElementById('studentTableBody');
+            studentTableBody.innerHTML = ""
+            for (let id in student){
+                const stud = student[id];
+                const row = document.createElement('tr');
+                row.innerHTML=`
+                <td>${reg}</td>
+                <td>${stud.name}</td>
+                <td>${stud.age}</td>
+                <td>${stud.email}</td>
+                <td>
+                    <button onclick="updateStudent()">Update</button>
+                    <button onclick="deleteStudent()">Delete</button>
+                    </td>
+                `;
+                studentTableBody.appendChild(row);
+            }
         }
 
-        function deleteUser(id) {
-            delete users[id];
-            renderUsers();
+        function updateStudent(id){
+            const name = prompt("Enter a New Name: ",student[id].name);
+            const age = prompt("Enter a New Name: ",student[id].age);
+            const email = prompt("Enter a New Name: ",student[id].email);
+        
+            if (name !== null && age !== null && email !== null){
+                student[id] = {name,age,email};
+                renderInfo();
+            }
+        }
+
+        function deleteStudent(id){
+            delete student[id];
+            renderInfo()
         }
     </script>
-
 </body>
 </html>
