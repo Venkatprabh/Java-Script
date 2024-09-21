@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex</title>
+    <style>
+        body{
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 1.test() Returns a boolean value
+        let regex1 = /hello/; 
+        document.write(regex1.test("hello world"));
+        document.write("<br>")
+        document.write("<hr>")
+
+        // 2.exec() search for a match, if exist return the value within an array, if the match not avail. return null.
+        let regex2 = /hello/;
+        document.write(regex2.exec("hello world"));
+        var x = typeof(regex2.exec("hello world"));
+        document.write("<br>")
+        document.write(regex2.exec("Welcome to Java Script"));
+        document.write("<br>")
+        document.write(x);  //returns object means an array object.
+        document.write("<br>")
+        document.write("<hr>")
+
+        //3.match() search the regex string is inside match string if avail.return hello, else return null. 
+        let regex3 = /Hello/i; // "i" indicates neglect string cases.
+        document.write("Hello Java Script".match(regex3));
+        document.write("<br>")
+        document.write(("hello JS".match(regex3)));
+        document.write("<br>")
+        document.write("<hr>")
+
+        // 4.matchAll() while using matchAll we should declare it globally.
+        let regex4 = /hello/g;
+        let str = 'hello ladies and hello gentle men';
+        for (var x of str.matchAll(regex4)){
+            document.write(x);
+        };        
+        document.write("<br>")
+        document.write("<hr>")
+        
+        // 5.replace() replace a string to a specified string
+        let result1 = "welcome to python world".replace(/python/,"JS");
+        document.write(result1);
+        document.write("<br>")
+        document.write("<hr>")
+
+        // 6.replaceAll()   while using replaceAll we should declare it globally.
+        let result2 = "hello ladies and Hello gentle men".replaceAll(/hello/gi,"dear"); 
+        document.write(result2);
+        document.write("<br>")
+        document.write("<hr>")
+
+        // 7.search() return the index value of given string, or return -1 if no such string there.
+        let text1 = "hello ladies and Hello gentle men".search(/and/);
+        let text2 = "hello ladies and Hello gentle men".search(/hai/);
+        document.write(text1,"<br>");
+        document.write(text2);
+        document.write("<br>")
+        document.write("<hr>")
+
+        // 8.split() split a string depending upon the given regex expression.
+        let str1 = "python, react, css,Javascript".split(/,s*/); //split can be done if any one seperator exist.here we have two seperat.here we used a quantifier * it represents two continous char may occour in the following order or may not in the following order with same char. 
+        document.write(str1); //returns an array object.
+</script>
+</body>
+</html>

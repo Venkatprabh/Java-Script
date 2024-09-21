@@ -20,15 +20,15 @@
 //1.  
      try{
             let result1 = 10/0;
-            // document.write(result1);
+             document.write(result1);
             // if we try to get zero div.error the error type comes in try block, not considering catch block.
-            if (result1 == "infinity"){
+            if (result1 == "Infinity"){
                 throw new Error("Integer Cannot be divide by zero");
             }
         }
         catch(error){
-            document.write("An error occoured:"+error.name);
-            document.write("an error occoured:"+error.message);
+            console.log("An error occoured:"+error.name);
+            console.log("an error occoured:"+error.message);
         }
         // finally{
         //     document.write("done")
