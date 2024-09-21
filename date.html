@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+<body>
+    <script>
+        let day = new Date();
+        let hrs = day.getHours();
+        let mins = day.getMinutes();
+        let sec = day.getSeconds();
+
+        let period = hrs >= 12 ? "PM" : "AM";
+            hrs = hrs % 12;
+            mins = mins < 10 ? "0"+mins : mins;
+            sec = sec < 10 ? "0"+sec : sec;
+            document.write(hrs + ":" + mins + ":" + sec + " " + period);
+        
+    </script>
+</body>
+</html>

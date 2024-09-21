@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: #61dafb;
+        }
+
+        #clock {
+            font-size: 60px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="clock"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // Extract hours, minutes, and seconds
+            let hrs = now.getHours();
+            let mins = now.getMinutes();
+            let secs = now.getSeconds();
+            let period = hrs >= 12 ? 'PM' : 'AM';  // Corrected variable name to period
+
+            // Convert 24-hour format to 12-hour format
+            hrs = hrs % 12;
+            hrs = hrs ? hrs : 12; // 0 becomes 12 (for midnight)
+
+            // Format the time values to be two digits
+            hrs = hrs < 10 ? '0' + hrs : hrs;
+            mins = mins < 10 ? '0' + mins : mins;
+            secs = secs < 10 ? '0' + secs : secs;
+
+            // Display the time in HH:MM:SS AM/PM format
+            const currentTime = `${hrs}:${mins}:${secs} ${period}`;
+            document.getElementById("clock").textContent = currentTime;
+        }
+
+        // Update the clock every second (1000ms)
+        setInterval(updateClock, 1000);
+
+        // Initial call to display the clock immediately when the page loads
+        updateClock();
+    </script>
+
+</body>
+</html>

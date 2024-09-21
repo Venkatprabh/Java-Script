@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E mail validation</title>
+</head>
+<body>
+    <script>
+        function validateEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
+
+        // Example usage:
+        const email = "3example@example.cop";
+        if (validateEmail(email)) {
+            document.write("Valid email address");
+        } else {
+            document.write("Invalid email address");
+        }
+
+    </script>
+</body>
+</html>
