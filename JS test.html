@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 25px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 1.
+        function validateEmail(email) {
+        const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        return pattern.test(email);}
+        const emails = ["test@example.com", "invalid-email@", "user@domain.co.in",
+        "user.name@domain.com"];
+        emails.forEach(email => {
+        if (validateEmail(email)) {
+        console.log(`'${email}' is a valid email address.`);
+        } else {
+        console.log(`'${email}' is an invalid email address.`);
+        }
+        });
+ 
+        // 2.
+        let score = 85;
+        let grade = score >= 90 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : score >= 60 ? 'D' : 'F';
+        console.log(grade);
+
+        // 3.
+        let fruits1 = ['apple', 'banana'];
+        fruits1.push('cherry');
+        console.log(fruits1);
+        fruits1.unshift('mango');
+        console.log(fruits1);
+
+        // 4.
+        let fruits2 = ['apple', 'banana'];
+        console.log(Array.isArray(fruits2));
+        let notAnArray = 'apple';
+        console.log(Array.isArray(notAnArray));
+
+        // 5.
+        let numbers1 = [1, 2, 3, 4, 5];
+        let evenNumbers = numbers1.filter(num => num % 2 === 0);
+        console.log(evenNumbers);
+
+        // 6.
+        let fruits3 = ['apple', 'banana', 'cherry'];
+        console.log(fruits3.indexOf('mango'));
+
+        // 7.
+        let fruits4 = ['apple', 'banana', 'cherry'];
+        fruits4.splice(1, 1, 'mango', 'grape'); // 1-which index to be deleted,1-no.of count to be delete, no.of inserted item, so the len.of arr will be modify.
+        console.log(fruits4);
+
+        // 8.
+        let numbers2 = [1, 2, 3, 4];
+        numbers2.fill(0, 2, 4); //the value (0) to be filled in the index value from 2 upto 3rd index.
+        console.log(numbers2);
+
+        // 9.
+        let users = [
+        { name: 'John', age: 30 },
+        { name: 'Jane', age: 25 },
+        { name: 'John', age: 20 }
+        ];
+        users.sort((a, b) => {
+        if (a.name === b.name) {
+        return a.age - b.age;
+        } else {
+        return a.name.localeCompare(b.name);
+        }
+        });console.log(users);
+
+        // 10.
+        let array1 = [1, 2, 3, 4];
+        let array2 = [3, 4, 5, 6];
+        let intersection = array1.filter(value => array2.includes(value));
+        console.log(intersection);
+
+        // 11.
+        let arr = new Array(5).fill(0);
+        console.log(arr);
+
+        // 12.
+        function foo() {
+        let b = 1;
+        function inner() {
+        return b;
+        }
+        return inner;
+        }
+        let get_func_inner = foo();
+        console.log(get_func_inner());
+        console.log(get_func_inner());
+        console.log(get_func_inner());
+
+        // 13.
+        setTimeout(() => {
+        try {
+        throw new Error('err');
+        } catch (err) {
+        2
+        console.log('Caught inside timeout:', err.message);
+        } }, 200);
+
+        // 14.
+        let result1 = " Hello World! ".trim().toLowerCase().replace("!", ".");
+        console.log(result1);
+        
+        // 15.
+        let result2 = "1, 2, 3, 4"
+        .split(", ")
+        .map(num => num * num)
+        .join("-");
+        console.log(result2);
+
+        // 16.
+        let result3 = " Coding is fun! "
+        .trim()
+        .toUpperCase()
+        .replace("!", "")
+        .split(" ")
+        .reverse()
+        .join(" ");
+        console.log(result3);
+
+        // 17.
+        let str1 = "";
+        let result4 = (str1 || "Hello, ").toUpperCase();
+        console.log(result4);
+
+        // 18.
+        let result5 = "javascript"
+        .replace(/a/g, "1")
+        .replace(/e/g, "2")
+        .replace(/i/g, "3");
+        console.log(result5);
+
+        // 19.
+        let str2 = "welcome";
+        let result6 = str2.endsWith("back") ? str2 : str2.concat(" back");
+        console.log(result6);
+
+        // 20.
+        function word(str3) {
+        let cleaned = str3 .toLowerCase().replace(/[^a-z0-9]/g, '');
+        return cleaned === cleaned.split('').reverse().join('');
+        }
+        console.log(word("A man, a plan, a canal: Panama"));
+        console.log(word("race a car"));
+        
+        // 21.
+        function Word(str4) {
+        let charMap = {};
+        str4
+        .toLowerCase() .replace(/\s+/g, '').split('')
+        .forEach(char => charMap[char] = (charMap[char] || 0) + 1);
+        return Object.keys(charMap).reduce((a, b) => charMap[a] > charMap[b] ? a : b);
+        }
+        console.log(Word("Hello world"));
+        
+        // 22.
+        function Words(sentence) {
+        return sentence
+        .split(' ') // Split into words
+        .map(word => word.split('').reverse().join(''))
+        .join(' ');
+        }
+        console.log(Words("Hello world!"));
+        
+        // 23.
+        function Words(str5) {
+        return str5
+        .split('')
+        .filter((char, index, self) => self.indexOf(char) === index)
+        .join('');}
+        console.log(Words("aabbccdd"));
+        
+        // 24.
+        // function Number(str6) {
+        // return str6
+        // .match(/\d+/g) // Find all sequences of digits
+        // .map(Number) // Convert each match to a number
+        // .reduce((sum, num) => sum + num, 0); // Sum all numbers
+        // }
+        // console.log(Number("The price is 20 dollars, and the discount is 5 dollars."));
+        
+        // 25.
+        function wordCount(sentence) {
+        return sentence
+        .toLowerCase()
+        .replace(/[^\w\s]/g, '')
+        .split(/\s+/)
+        .reduce((counts, word) => { counts[word] = (counts[word] || 0) + 1;
+        return counts;
+        }, {});
+        }
+        console.log(word("Hello world! Hello, hello."));
+        
+        // 26.
+        function Words(sentence) {
+        return sentence
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) .join(' ');
+        }
+        console.log(Words("hEllo wOrld! tHis is a TEST."));
+        
+        // 27.
+        function processSentence(sentence1) {
+        return sentence1
+        .toLowerCase()
+        .split(' ')
+        .map(word => {
+        let reversedWord = word.split('').reverse().join('');
+        return reversedWord.length > 4 ? reversedWord.toUpperCase() : reversedWord;
+        })
+        .join(' ');}
+        const sentence1 = "JavaScript is a powerful language";
+        const result7 = processSentence(sentence1);
+        console.log(result7);
+        
+        // 28.
+        function words(sentence2) {
+        return sentence2
+        .toLowerCase()
+        .split(' ')
+        .map(word => {
+        let wordWithoutVowels = word.replace(/[aeiou]/g, '');
+        return wordWithoutVowels.length; });
+        }
+        const sentence2 = "Hello world this is an example";
+        const result8 = words(sentence2);
+        console.log(result8);
+        
+        // 29.
+        function sumArray(arr) {
+        try {
+        if (!Array.isArray(arr)) {
+        throw new Error("Input is not an array");
+        }
+        return arr.reduce((sum, item) => sum + item, 0);
+        } catch (error) {
+        console.log("Error:", error.message);
+        }
+        }
+        console.log(sumArray([1, 2, 3, 4, 5]));
+        console.log(sumArray("Not an array"));
+        
+        // 30.
+        function addDays(date, days) {
+        let result = new Date(date);
+        result.setDate(result.getDate() + days); // Add days
+        return result;
+        }
+        function addHours(date, hours) {
+        let result = new Date(date);
+        result.setHours(result.getHours() + hours); // Add hours
+        return result;
+        }
+        let currentDate = new Date();
+        console.log("Current Date:", currentDate);
+        console.log("Date after 10 days:", addDays(currentDate, 10));
+        console.log("Date after 5 hours:", addHours(currentDate, 5));
+        
+        // 31.
+        function Words(sentence3) {
+        return sentence3
+        .toLowerCase()
+        .replace(/[^\w\s]/g, '')
+        .split(' ')
+        .reduce((acc, word) => {
+        acc[word] = (acc[word] || 0) + 1;
+        return acc; // Return the accumulator
+        }, {});
+        }
+        const sentence3 = "Hello world! Hello, hello world.";
+        const result9 = Words(sentence3);
+        console.log(result9);
+        
+        // 32.
+        function words(sentence4) {
+        return sentence4
+        .toLowerCase()
+        .split(' ')
+        .map(word => {
+        const isPalindrome = word === word.split('').reverse().join('');
+        const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+        return isPalindrome ? capitalized.split('').reverse().join('') : capitalized;
+        })
+        .join(' ');
+        }
+        const sentence4 = "Level racecar apple kayak banana";
+        const result10 = words(sentence4);
+        console.log(result10);
+        
+        // 33.
+        function sumWordLengths(sentence5) {
+        return sentence5
+        .split(' ')
+        .filter(word => !/\d/.test(word))
+        .reduce((total, word) => total + word.length, 0);
+        }
+        const sentence6 = "Hello world 2023 this is a test";
+        const result11 = sumWordLengths(sentence6);
+        console.log(result11);
+        
+        function sumAsciiValues(str) {
+        return str
+        .split('')
+        .map(char => char.charCodeAt(0))
+        .reduce((total, ascii) => total + ascii, 0);
+        }
+        const inputString = "Hello, World!";
+        const result = sumAsciiValues(inputString);
+        console.log(result);
+</script>
+</body>
+</html>
