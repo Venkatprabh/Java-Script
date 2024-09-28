@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+<body>
+    <h2>A cookie is an amount of information that can be stored between 
+        user side and server side.
+    </h2>
+    <form action="">
+        <label for="cookieNameInput">Cookie Name:</label>
+        <input type="text" name="cookie name" id="cookieNameInput" placeholder="Enter a cookie name..."><br><br>
+
+        <label for="cookieValueInput">Cookie Value:</label>
+        <input type="text" name="cookie value" id="cookieValueInput" placeholder="Enter a cookie value..."><br><br>
+
+        <label for="getCookieValue">Cookie Name</label>
+        <input type="text" id="getCookieValue" placeholder="Cookie Name..."><br><br>
+        <button onclick="setCookie()">Create Cookie</button>
+        <button onclick="getCookie()">Get Cookie Value</button>
+    </form>
+    <script>
+        function setCookie(){
+            const cookieName = document.getElementById("cookieNameInput").value;
+            const cookieValue = document.getElementById("cookieValueInput").value;
+
+            if (!cookieName || !cookieValue){
+                alert("Please enter the both cookie name and value.");
+                return;
+            }
+        
+            document.cookie = `${cookieName} = ${cookieValue} ; expires=Fri, 27 Sep 2024 20:57:00 UTC; path=/`;
+        
+            alert("Cookie set Succesfully...")
+        }
+
+        function getCookie(){
+            if (!cookieName){
+                alert("Enter a valid cookie name...")
+                return;
+            }
+            const cookieName = document.getElementById("cookieNameInput").value;
+            const cookies = document.cookie.split(";");
+            
+            let found = false;
+            for (var i=0; i<cookie.length; i++){
+                const cookie = cookies[i].trim();
+
+                if (cookie.startsWith(`${cookieName}=`)){
+                    const value = cookie.substring(`${cookieName}=`.length);
+                    alert("Cookie Value : ",value);
+                    found = true;
+                    break
+                }
+            }
+
+        function updateCookie(){
+
+        }
+        }
+
+    </script>
+</body>
+</html>

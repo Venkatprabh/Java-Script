@@ -46,6 +46,7 @@
         console.log(Array.isArray(notAnArray));
 
         // 5.
+        
         let numbers1 = [1, 2, 3, 4, 5];
         let evenNumbers = numbers1.filter(num => num % 2 === 0);
         console.log(evenNumbers);
@@ -106,7 +107,6 @@
         try {
         throw new Error('err');
         } catch (err) {
-        2
         console.log('Caught inside timeout:', err.message);
         } }, 200);
 
