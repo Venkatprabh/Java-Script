@@ -14,6 +14,8 @@
             margin: 0 auto;
         }
         input, button {
+            border-radius: 5px;
+            box-shadow: 0 2px rgb(20, 0, 0);
             padding: 10px;
             margin: 5px 0;
         }
@@ -30,10 +32,11 @@
         <!-- Form to get Passengers Info -->
         <div>
             <h3>Train Ticket Booking</h3>
+            <label for="qty">No.Of Passangers</label><br>
+            <input type="text" id="qty">
             <form id="ticketForm">
                 <input type="text" id="name" placeholder="Passanger Name" required><br>
                 <input type="number" id="age" placeholder="Age" required><br>
-                <input type="number" id="qty" placeholder="No.of Passanger" required><br>
                 <label>
                     <input type="radio" name="gender" value="Male" required>Male
                 </label>
@@ -43,7 +46,7 @@
                 <label>
                     <input type="radio" name="gender" value="Other" required>Other
                 </label>
-                <button type="submit">Buy Tickets</button>
+                <button type="submit">Add Passanger</button>
             </form>
         </div>
 

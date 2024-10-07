@@ -1,29 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Train Ticket Booking System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        input, button {
-            padding: 10px;
-            margin: 5px 0;
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Ticket Booking</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <form id="passanger">
-        
+
+  <div class="container">
+    <h1>Train Ticket Booking</h1>
+    
+    <form id="bookingForm">
+      <label for="from">From:</label>
+      <input type="text" id="from" placeholder="Enter departure station" required>
+
+      <label for="to">To:</label>
+      <input type="text" id="to" placeholder="Enter destination station" required>
+
+      <label for="class">Class:</label>
+      <select id="class" required>
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+        <option value="first">First Class</option>
+      </select>
+
+      <label for="passengers">No. of Passengers:</label>
+      <input type="number" id="passengers" min="1" value="1" required>
+
+      <button type="submit">Calculate Fare</button>
     </form>
+
+    <div class="ticket-summary" id="ticketSummary">
+      <!-- Ticket details will be shown here -->
+    </div>
+  </div>
+
+  <script>
+  // script.js
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get form values
+  const from = document.getElementById('from').value;
+  const to = document.getElementById('to').value;
+  const travelClass = document.getElementById('class').value;
+  const passengers = document.getElementById('passengers').value;
+
+  // Basic fare calculation
+  let farePerPerson;
+  if (travelClass === 'economy') {
+    farePerPerson = 50;
+  } else if (travelClass === 'business') {
+    farePerPerson = 100;
+  } else if (travelClass === 'first') {
+    farePerPerson = 150;
+  }
+
+  const totalFare = farePerPerson * passengers;
+
+  // Display ticket summary
+  const ticketSummary = document.getElementById('ticketSummary');
+  ticketSummary.style.display = 'block';
+  ticketSummary.innerHTML = `
+    <h2>Ticket Summary</h2>
+    <p><strong>From:</strong> ${from}</p>
+    <p><strong>To:</strong> ${to}</p>
+    <p><strong>Class:</strong> ${travelClass.charAt(0).toUpperCase() + travelClass.slice(1)}</p>
+    <p><strong>Passengers:</strong> ${passengers}</p>
+    <p><strong>Total Fare:</strong> $${totalFare}</p>
+  `;
+});
+</script>
 </body>
 </html>
