@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - User Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #343a40;
+            padding: 15px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h2 {
+            margin: 0;
+            font-weight: 500;
+        }
+        .navbar button {
+            background-color: #dc3545;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar button:hover {
+            background-color: #c82333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .download-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filters button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .filters button.active {
+            background-color: #28a745;
+        }
+        .action-buttons button {
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
+        }
+        .edit-btn { background-color: #007bff; color: white; }
+        .delete-btn { background-color: #dc3545; color: white; }
+        #generatePDF { background-color: #28a745; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Admin Dashboard</h2>
+    <button id="logoutBtn">Logout</button>
+</div>
+
+<div class="container">
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">Show All</button>
+        <button class="filter-btn" data-filter="Male">Male Users</button>
+        <button class="filter-btn" data-filter="Female">Female Users</button>
+        <button class="filter-skill-btn" data-skill="JavaScript">JavaScript Users</button>
+        <button class="filter-skill-btn" data-skill="Python">Python Users</button>
+        <button id="generatePDF">Generate PDF</button>
+    </div>
+
+    <div class="table-container">
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Skills</th>
+                    <th>Profile Image</th>
+                    <th>Resume</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+$(document).ready(function () {
+    const adminUsername = "admin";
+    let users = [];
+
+    // Load users from localStorage
+    function loadUsers() {
+        users = [];
+        $.each(localStorage, function (key, value) {
+            if (key !== adminUsername && key !== 'sessionToken') {
+                const user = JSON.parse(value);
+                if (user && user.username) users.push(user);
+            }
+        });
+        displayUsers(users);
+    }
+
+    // Display users in the table
+    function displayUsers(userList) {
+        const $tbody = $('#userTable tbody');
+        $tbody.empty();
+        $.each(userList, function (index, user) {
+            const $row = $('<tr>');
+            $row.append(`<td>${index + 1}</td>`)
+                .append(`<td>${user.username}</td>`)
+                .append(`<td>${user.email}</td>`)
+                .append(`<td>${user.contact}</td>`)
+                .append(`<td>${user.dob}</td>`)
+                .append(`<td>${user.gender}</td>`)
+                .append(`<td>${user.skills}</td>`)
+                .append(`<td><img src="${user.image || 'default-avatar.png'}" class="profile-img"></td>`)
+                .append(`<td>${user.file ? `<a href="${user.file}" class="download-link" download>Download</a>` : 'No Resume'}</td>`)
+                .append(`
+                    <td class="action-buttons">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                `);
+            $tbody.append($row);
+
+            // Handle edit and delete actions
+            $row.find('.edit-btn').click(() => editUser(user.username));
+            $row.find('.delete-btn').click(() => deleteUser(user.username));
+        });
+    }
+
+    // Edit user
+    function editUser(username) {
+        const user = JSON.parse(localStorage.getItem(username));
+        if (user) {
+            const newUsername = prompt("Edit Username:", user.username);
+            if (newUsername) {
+                user.username = newUsername;
+                localStorage.setItem(newUsername, JSON.stringify(user));
+                localStorage.removeItem(username);
+                loadUsers();
+            }
+        }
+    }
+
+    // Delete user
+    function deleteUser(username) {
+        if (confirm(`Delete ${username}?`)) {
+            localStorage.removeItem(username);
+            loadUsers();
+        }
+    }
+
+    // Filter users
+    $('.filter-btn').click(function () {
+        const filter = $(this).data('filter');
+        const filtered = filter === 'all' ? users : users.filter(u => u.gender === filter);
+        displayUsers(filtered);
+    });
+
+    $('.filter-skill-btn').click(function () {
+        const skill = $(this).data('skill');
+        displayUsers(users.filter(u => u.skills.includes(skill)));
+    });
+
+    // Logout
+    $('#logoutBtn').click(() => {
+        localStorage.removeItem('sessionToken');
+        window.location.href = 'index.html';
+    });
+
+    // Generate PDF
+    $('#generatePDF').click(function () {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text('User List', 20, 20);
+        doc.save('user-list.pdf');
+    });
+
+    loadUsers(); // Initialize user table
+});
+</script>
+
+</body>
+</html>

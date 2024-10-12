@@ -100,7 +100,6 @@
     <h2>Register</h2>
     <div class="error" id="error"></div>
     
-    <!-- Wrap the form inputs inside a form tag -->
     <form id="registerForm">
         <label for="registerUsername">Username</label>
         <input type="text" id="registerUsername" placeholder="Username" required>
@@ -158,58 +157,61 @@
     </form>
 
     <a href="login.html">Already have an account? Log in</a>
-    </div>
+</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const username = document.getElementById('registerUsername').value;
-        const email = document.getElementById('registerEmail').value;
-        const password = document.getElementById('registerPassword').value;
-        const contact = document.getElementById('registerContact').value;
-        const dob = document.getElementById('registerDOB').value;
-        const image = document.getElementById('registerImage').files[0];
-        const file = document.getElementById('registerFile').files[0];
+    $(document).ready(function() {
+        $('#registerForm').submit(function(event) {
+            event.preventDefault();
+            
+            const username = $('#registerUsername').val();
+            const email = $('#registerEmail').val();
+            const password = $('#registerPassword').val();
+            const contact = $('#registerContact').val();
+            const dob = $('#registerDOB').val();
+            const image = $('#registerImage')[0].files[0];
+            const file = $('#registerFile')[0].files[0];
 
-        const genderOption = document.querySelector('input[name="gender"]:checked');
-        if (!genderOption) {
-            document.getElementById('error').textContent = 'Please select a gender';
-            return;
-        }
-        const gender = genderOption.value;
-
-        const skills = document.getElementById('registerSkills').value;
-        const role = document.querySelector('input[name="userRole"]:checked').value;
-
-        if (localStorage.getItem(username)) {
-            document.getElementById('error').textContent = 'Username already exists';
-        } else {
-            const reader = new FileReader();
-            reader.onloadend = function() {
-                const user = { 
-                    username, 
-                    email, 
-                    password, 
-                    contact, 
-                    dob, 
-                    image: reader.result, 
-                    file: file.name, 
-                    gender, 
-                    skills, 
-                    role 
-                };
-                localStorage.setItem(username, JSON.stringify(user));
-                alert('Registration successful! You can now log in.');
-                window.location.href = 'login.html';
-            };
-
-            if (image) {
-                reader.readAsDataURL(image);
-            } else {
-                document.getElementById('error').textContent = 'Please upload a profile image';
+            const genderOption = $('input[name="gender"]:checked');
+            if (!genderOption.length) {
+                $('#error').text('Please select a gender');
+                return;
             }
-        }
+            const gender = genderOption.val();
+
+            const skills = $('#registerSkills').val();
+            const role = $('input[name="userRole"]:checked').val();
+
+            if (localStorage.getItem(username)) {
+                $('#error').text('Username already exists');
+            } else {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    const user = { 
+                        username, 
+                        email, 
+                        password, 
+                        contact, 
+                        dob, 
+                        image: reader.result, 
+                        file: file.name, 
+                        gender, 
+                        skills, 
+                        role 
+                    };
+                    localStorage.setItem(username, JSON.stringify(user));
+                    alert('Registration successful! You can now log in.');
+                    window.location.href = 'login.html';
+                };
+
+                if (image) {
+                    reader.readAsDataURL(image);
+                } else {
+                    $('#error').text('Please upload a profile image');
+                }
+            }
+        });
     });
 </script>
 
