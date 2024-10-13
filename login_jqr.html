@@ -75,7 +75,7 @@
     <input type="text" id="loginUsername" placeholder="Username" required>
     <input type="password" id="loginPassword" placeholder="Password" required>
     <button id="loginButton">Log In</button>
-    <a href="register.html">Create an account</a>
+    <a href="register.jqr.html">Create an account</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -90,10 +90,10 @@
                 localStorage.setItem('sessionToken', username);
                 if (user.role === 'Admin') {
                     alert('Login successful! Redirecting to admin page.');
-                    window.location.href = 'admin.html'; // Redirect to admin page if the user is an Admin
+                    window.location.href = 'admin.jqr.html'; // Redirect to admin page if the user is an Admin
                 } else {
                     alert('Login successful!');
-                    window.location.href = 'home.html'; // Redirect to home page for regular users
+                    window.location.href = 'home.jqr.html'; // Redirect to home page for regular users
                 }
             } else {
                 $('#error').text('Invalid username or password');

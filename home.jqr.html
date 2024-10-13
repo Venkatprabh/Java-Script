@@ -115,7 +115,7 @@
 
         if (!sessionToken) {
             alert('Session expired. Please log in again.');
-            window.location.href = 'login.html';
+            window.location.href = 'login_jqr.html';
         } else {
             try {
                 const user = JSON.parse(localStorage.getItem(sessionToken));
@@ -136,7 +136,7 @@
                     });
             } catch (error) {
                 alert('Invalid session data. Please log in again.');
-                window.location.href = 'login.html';
+                window.location.href = 'login_jqr.html';
             }
         }
 
@@ -144,7 +144,7 @@
         $('#logoutButton').click(function () {
             localStorage.removeItem('sessionToken');
             alert('Logged out successfully!');
-            window.location.href = 'login.html';
+            window.location.href = 'login_jqr.html';
         });
 
         // Session timeout (1 minute)
@@ -161,7 +161,7 @@
         function logout() {
             localStorage.removeItem('sessionToken');
             alert('Session timed out. Please log in again.');
-            window.location.href = 'login.html';
+            window.location.href = 'login_jqr.html';
         }
     });
 </script>
