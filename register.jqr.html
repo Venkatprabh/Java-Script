@@ -121,7 +121,7 @@
         <input type="file" id="registerImage" accept="image/*" class="file-upload" required>
         
         <label for="registerFile">Upload Resume</label>
-        <input type="file" id="registerFile" accept=".pdf,.doc,.docx" class="file-upload" required>
+        <input type="file" id="registerFile" accept=".pdf,.doc,.docx" class="file-upload">
         
         <div class="radio-group">
             <label>
@@ -176,7 +176,7 @@
 
             const genderOption = $('input[name="gender"]:checked');
             if (!genderOption.length) {
-                $('#error').text('Please select a gender');
+                $('#error').text('Please select your gender');
                 return;
             }
             const gender = genderOption.val();

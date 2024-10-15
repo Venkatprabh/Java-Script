@@ -171,7 +171,10 @@ $(document).ready(function () {
                 .append(`<td>${user.gender}</td>`)
                 .append(`<td>${user.skills}</td>`)
                 .append(`<td><img src="${user.image || 'default-avatar.png'}" class="profile-img"></td>`)
-                .append(`<td>${user.file ? `<a href="${user.file}" class="download-link" download>Download</a>` : 'No Resume'}</td>`)
+                .append(`<td>${user.file 
+    ? `<a href="${user.file}" class="download-link" download>Download</a>` 
+    : 'No Resume'}
+</td>`)
                 .append(`
                     <td class="action-buttons">
                         <button class="edit-btn">Edit</button>
