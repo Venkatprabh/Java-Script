@@ -90,10 +90,10 @@
                 localStorage.setItem('sessionToken', username);
                 if (user.role === 'Admin') {
                     alert('Login successful! Redirecting to admin page.');
-                    window.location.href = 'admin.jqr.html'; // Redirect to admin page if the user is an Admin
+                    window.location.href = 'admin_jqr.html'; // Redirect to admin page if the user is an Admin
                 } else {
                     alert('Login successful!');
-                    window.location.href = 'home.jqr.html'; // Redirect to home page for regular users
+                    window.location.href = 'home_jqr.html'; // Redirect to home page for regular users
                 }
             } else {
                 $('#error').text('Invalid username or password');
