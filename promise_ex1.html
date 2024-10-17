@@ -12,8 +12,10 @@
                 if (Object.keys(user).length !== 0) {
                     resolve(user);
                 } else {
-                    reject("User not found");
+                    reject(User);
                 }
+                document.write("hello");
+                document.write("hai");
             }, 3000);
         });
 
@@ -22,11 +24,11 @@
                 let userInfo = await promise;
                 document.write(JSON.stringify(userInfo));
             }
-            catch(e){
-                document.write(e);
+            catch(reject){
+                document.write(reject);
             }
         }
-        getData()
+        // getData()
         // promise.then((user) => document.write("user found : ".json.user));
         // promise.catch((error) => document.write(error));
     </script>
