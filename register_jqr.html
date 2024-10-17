@@ -16,15 +16,15 @@
             height: 100vh;
         }
         .container {
-            margin-top: 700px;
+            margin-top: 900px;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             padding: 30px;
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
-        h2 {
+        h4 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
@@ -98,7 +98,7 @@
 <body>
 
 <div class="container">
-    <h2>Register</h2>
+    <h4>Drop your Info Here</h4>
     <div class="error" id="error"></div>
     
     <form id="registerForm">
@@ -106,19 +106,19 @@
         <input type="text" id="registerUsername" placeholder="Username" required>
         
         <label for="registerEmail">Email</label>
-        <input type="email" id="registerEmail" placeholder="Email" required>
+        <input type="email" id="registerEmail" placeholder="Email" >
         
         <label for="registerPassword">Password</label>
-        <input type="password" id="registerPassword" placeholder="Password" required>
+        <input type="password" id="registerPassword" placeholder="Password" >
         
         <label for="registerContact">Mobile Number</label>
-        <input type="tel" id="registerContact" placeholder="Mobile Number" required>
+        <input type="tel" id="registerContact" placeholder="Mobile Number" >
         
         <label for="registerDOB">Date of Birth</label>
-        <input type="date" id="registerDOB" required>
+        <input type="date" id="registerDOB" >
         
         <label for="registerImage">Upload Profile Image</label>
-        <input type="file" id="registerImage" accept="image/*" class="file-upload" required>
+        <input type="file" id="registerImage" accept="image/*" class="file-upload" >
         
         <label for="registerFile">Upload Resume</label>
         <input type="file" id="registerFile" accept=".pdf,.doc,.docx" class="file-upload">
@@ -159,7 +159,9 @@
 
     <a href="login_jqr.html">Already have an account? Log in</a>
 </div>
-
+<div id="dialog" title="Error" style="display: none;">Username already exists.
+  </div>
+  
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -185,7 +187,8 @@
             const role = $('input[name="userRole"]:checked').val();
 
             if (localStorage.getItem(username)) {
-                $('#error').text('Username already exists');
+               window.alert("user");
+
             } else {
                 const reader = new FileReader();
                 reader.onloadend = function() {

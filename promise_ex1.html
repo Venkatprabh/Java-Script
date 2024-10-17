@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let user = { u_name: "prabhu", city: "tuticorin" };
+                if (Object.keys(user).length !== 0) {
+                    resolve(user);
+                } else {
+                    reject("User not found");
+                }
+            }, 3000);
+        });
+
+        async function getData() {
+            try{
+                let userInfo = await promise;
+                document.write(JSON.stringify(userInfo));
+            }
+            catch(e){
+                document.write(e);
+            }
+        }
+        getData()
+        // promise.then((user) => document.write("user found : ".json.user));
+        // promise.catch((error) => document.write(error));
+    </script>
+    
+</body>
+</html>
