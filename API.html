@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Program Interface(API)</title>
+</head>
+<body>
+    <h2 style="text-align: center;">Weather API</h2>
+    <script>
+        getWeather = async (city) => {
+            let weatherAPI = `https://api.openweathermap.org/data/2.5/weather`;
+            let weatherObj = await fetch(weatherAPI);
+            let response = weatherObj.json();
+            return response;
+            async function callWeather() {
+                getWeather('chennai').than((response){
+                    document.write(response);
+                    // document.write(response);
+                })
+                .catch((error) => {
+                    document.write("error")
+                })
+            }
+        }
+    </script>
+</body>
+</html>
