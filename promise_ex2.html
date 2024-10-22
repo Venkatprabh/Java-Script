@@ -8,11 +8,11 @@
     <script>
         promise = new Promise((resolve, reject) => {
             setTimeout(() => {
-                let user = { u_name: "prabhu", city: "tuticorin" };
+                let user = {};
                 if (Object.keys(user).length !== 0) {
                     resolve(user);
                 } else {
-                    reject(User);
+                    reject(user);
                 }
             }, 3000);
         });
@@ -20,8 +20,8 @@
         async function getData(){
             let userInfo = await promise;
             document.write(JSON.stringify(userInfo),"<br>");
-            document.write("User Name: ",userInfo.u_name,"<br>");
-            document.write("Address: ",userInfo.city,"<br>");
+            // document.write("User Name: ",userInfo.u_name,"<br>");
+            // document.write("Address: ",userInfo.city,"<br>");
         }
 
         getData().then(() => {

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Weather Checker</h1>
+        <form id="weather-form">
+            <div class="mb-3">
+                <label for="city" class="form-label">Enter City Name</label>
+                <input type="text" class="form-control" id="city" placeholder="Enter city">
+            </div>
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+        <div class="mt-4">
+            <h2>Weather Details:</h2>
+            <p id="weather-info" class="text-muted"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('weather-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const city = document.getElementById('city').value.trim();
+            const weatherInfo = document.getElementById('weather-info');
+
+            // Check if the user has entered a city name
+            if (city === '') {
+                weatherInfo.textContent = 'Please enter a city name.';
+                return;
+            }
+
+            const apiKey = 'f836f8c2e0c92b58fdde36f97b6d3ebc';
+            const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+'&units=metric';
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP Error: ${response.status}`);
+                    }
+                    return response.json();
+                    
+                })
+                .then(data => {
+                    console.log(data); // Debugging API response in the console
+
+                    // Display weather information if the API call is successful
+                    weatherInfo.textContent = 
+                        `The temperature in ${data.name} is ${data.main.temp}°C with ${data.weather[0].description}.`;
+                })
+                .catch(error => {
+                    console.error('Fetch Error:', error);
+                    weatherInfo.textContent = 
+                        'An error occurred. Please check the city name or try again later.';
+                });
+        });
+    </script>
+</body>
+</html>
