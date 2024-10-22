@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true); // true for asynchronous
+
+        xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.stringify(xhr.responseText);
+            document.write("Response:", response);
+        } else {
+            document.error("Request failed with status:", xhr.status);
+        }
+        };
+
+        xhr.onerror = function () {
+        document.error("Network Error");
+        };
+
+        xhr.send();
+
+
+        fetch("https://jsonplaceholder.typicode.com/posts/1")
+        .then((response) => {
+            if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            document.write("Response:", data);
+        })
+        .catch((error) => {
+            document.error("Error:", error);
+        });
+
+    </script>
+</body>
+</html>
